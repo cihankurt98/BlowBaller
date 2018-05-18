@@ -5,8 +5,6 @@ public class Shoot : MonoBehaviour
 {
     public GameObject ball;
     private GameObject ballClone;
-    public GameObject meter;
-    public GameObject arrow;
 
     public Vector3 ballPos;
     private Vector3 throwSpeed;
@@ -19,5 +17,19 @@ public class Shoot : MonoBehaviour
         Physics.gravity = GameMaster.instance.ballGravity; //new Vector3(0, -20, 0);
         throwSpeed = GameMaster.instance.ballThrowSpeed;
         arrowSpeed = GameMaster.instance.arrowSpeed;
+    }
+
+    void FixedUpdate() //Performance. Memory management for iPad.
+    {
+  
+    }
+
+    public void ShootBall(int controllerValue)
+    {
+        ballClone = Instantiate(ball, ballPos, transform.rotation);
+        throwSpeed.y = throwSpeed.y + controllerValue;
+        throwSpeed.z = throwSpeed.z + controllerValue;
+        ballClone.GetComponent<Rigidbody>().AddForce(throwSpeed, ForceMode.Impulse);
+        GetComponent<AudioSource>().Play(); //play shoot sound
     }
 }

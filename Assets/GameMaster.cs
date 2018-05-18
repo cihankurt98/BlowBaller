@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
@@ -8,8 +9,14 @@ public class GameMaster : MonoBehaviour
     public Vector3 ballThrowSpeed;
     public Vector3 ballGravity;
     [Header("Meter settings")]
+    public Slider slider;
     public float arrowSpeed;
+
+
+
+ 
     public static GameMaster instance;
+ 
 
     void Awake()
     {
@@ -30,6 +37,11 @@ public class GameMaster : MonoBehaviour
     void Start()
     {
 
+    }
+
+    public void updateSlider(int controllerValue)
+    {
+        slider.value = controllerValue;
     }
 
 

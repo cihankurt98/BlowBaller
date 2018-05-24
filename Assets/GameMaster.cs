@@ -71,7 +71,7 @@ public class GameMaster : MonoBehaviour
         slider.value = (float)System.Math.Round(DeviceManager.Instance.FlowLMin, 1);
         if (slider.value == slider.maxValue)
         {
-            ball.GetComponent<Shoot>().ShootBall(slider.value);
+            ball.GetComponent<BallManager>().ShootBall(slider.value);
         }
      }
 

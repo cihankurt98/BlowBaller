@@ -6,17 +6,27 @@ using UnityEngine.SceneManagement;
 public class GameMaster : MonoBehaviour
 {
     [Header("Ball settings")]
-    public Vector3 ballThrowSpeed;
-    public Vector3 ballGravity;
+    [SerializeField]
+    private Vector3 ballThrowSpeed;
+    [SerializeField]
+    private Vector3 ballGravity;
     [Header("Meter settings")]
-    public Slider slider;
-    public float arrowSpeed;
+    [SerializeField]
+    private Slider slider;
+    [SerializeField]
+    private float arrowSpeed;
+    [Header("Controller settings")]
+    [SerializeField]
+    private DeviceManager.DeviceType deviceType;
+    [SerializeField]
+    private GameObject ball;
 
 
 
- 
+
+
     public static GameMaster instance;
- 
+
 
     void Awake()
     {
@@ -28,21 +38,43 @@ public class GameMaster : MonoBehaviour
         {
             instance = this;
         }
-
         DontDestroyOnLoad(this);
     }
 
-
-
     void Start()
     {
-
+        DeviceManager.Instance.SetDeviceType(deviceType);
     }
 
-    public void updateSlider(int controllerValue)
+    void FixedUpdate()
     {
-        slider.value = controllerValue;
+        updateSlider();
     }
+
+    public GameObject getBall()
+    {
+        return ball;
+    }
+
+    public Vector3 getBallThrowSpeed()
+    {
+        return ballThrowSpeed;
+    }
+
+    public Vector3 getBallGravity()
+    {
+        return ballGravity;
+    }
+
+    public void updateSlider()
+    {
+        slider.value = (float)System.Math.Round(DeviceManager.Instance.FlowLMin, 1);
+        if (slider.value == slider.maxValue)
+        {
+            ball.GetComponent<Shoot>().ShootBall(slider.value);
+        }
+     }
+
 
 
 }

@@ -122,11 +122,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400024, guid: 5d7adde8425a64f88ba29d90fb894dbe, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 11.8
+      value: 12.954
       objectReference: {fileID: 0}
     - target: {fileID: 400024, guid: 5d7adde8425a64f88ba29d90fb894dbe, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -9.2
+      value: -9.8682
       objectReference: {fileID: 0}
     - target: {fileID: 400024, guid: 5d7adde8425a64f88ba29d90fb894dbe, type: 2}
       propertyPath: m_LocalPosition.z
@@ -158,11 +158,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400024, guid: 5d7adde8425a64f88ba29d90fb894dbe, type: 2}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 0.6250001
       objectReference: {fileID: 0}
     - target: {fileID: 400024, guid: 5d7adde8425a64f88ba29d90fb894dbe, type: 2}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.72500443
       objectReference: {fileID: 0}
     - target: {fileID: 400024, guid: 5d7adde8425a64f88ba29d90fb894dbe, type: 2}
       propertyPath: m_LocalScale.y
@@ -656,7 +656,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: a213c349dec634c6b81dfc8114650298, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 66.7
+      value: 66.3
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a213c349dec634c6b81dfc8114650298, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1372,12 +1372,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a91f3c23fa71d494ba55cf02b44ba140, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  basket: {fileID: 872638321}
+  basketSpeed: 30
+  basketStartPosition: {x: 66.3, y: 51.182, z: 80.288}
+  ball: {fileID: 1462896136}
   ballThrowSpeed: {x: -200, y: -100, z: 50}
   ballGravity: {x: 0, y: -50, z: 0}
   slider: {fileID: 766043574}
   arrowSpeed: 0.3
   deviceType: 1
-  ball: {fileID: 1462896136}
 --- !u!4 &1997077182
 Transform:
   m_ObjectHideFlags: 0

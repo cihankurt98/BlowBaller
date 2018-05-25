@@ -5,7 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class GameMaster : MonoBehaviour
 {
+    [Header("Basket settings")]
+    [SerializeField]
+    private GameObject basket;
+    [SerializeField]
+    private float basketSpeed;
+    [SerializeField]
+    private Vector3 basketStartPosition;
     [Header("Ball settings")]
+    [SerializeField]
+    private GameObject ball;
     [SerializeField]
     private Vector3 ballThrowSpeed;
     [SerializeField]
@@ -18,8 +27,8 @@ public class GameMaster : MonoBehaviour
     [Header("Controller settings")]
     [SerializeField]
     private DeviceManager.DeviceType deviceType;
-    [SerializeField]
-    private GameObject ball;
+  
+    
 
 
 
@@ -51,6 +60,11 @@ public class GameMaster : MonoBehaviour
         updateSlider();
     }
 
+    public float getBasketSpeed()
+    {
+        return basketSpeed;
+    }
+
     public GameObject getBall()
     {
         return ball;
@@ -66,6 +80,11 @@ public class GameMaster : MonoBehaviour
         return ballGravity;
     }
 
+    public Vector3 getBasketStartPosition()
+    {
+        return basketStartPosition;
+    }
+
     public void updateSlider()
     {
         if (ball.transform.position == ball.GetComponent<BallManager>().getStartPosition())
@@ -74,6 +93,7 @@ public class GameMaster : MonoBehaviour
             if (slider.value == slider.maxValue)
             {
                 ball.GetComponent<BallManager>().ShootBall(slider.value);
+                basket.GetComponent<Basket>().Reset();
                 slider.value = 0;
             }
         }

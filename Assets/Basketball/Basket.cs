@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Basket : MonoBehaviour
@@ -12,8 +13,8 @@ public class Basket : MonoBehaviour
 
     void OnTriggerEnter()
     {
-        int currentScore = int.Parse(score.GetComponent<GUIText>().text) + 1;
-        score.GetComponent<GUIText>().text = currentScore.ToString();
+        int currentScore = int.Parse(score.GetComponent<Text>().text) + 1;
+        score.GetComponent<Text>().text = currentScore.ToString();
         GetComponent<AudioSource>().Play();
     }
 }

@@ -8,21 +8,19 @@ public class Ball : MonoBehaviour
     private Vector3 throwSpeed;
 
     // Use this for initialization
-    void Start()
+
+    void Awake()
     {
-        /* Increase Gravity */
+        FixedUpdate();
+    }
+    void FixedUpdate()
+    {
         Physics.gravity = GameMaster.instance.getBallGravity(); //new Vector3(0, -20, 0);
         throwSpeed = GameMaster.instance.getBallThrowSpeed();
     }
 
-    void FixedUpdate() //Performance. Memory management for iPad.
-    {
-  
-    }
-
     public void ShootBall(float sliderValue)
     {
-        //transform.position = = Instantiate(GameMaster.instance.getBall(), ballPos, transform.rotation);
         throwSpeed.y = throwSpeed.y + sliderValue;
         throwSpeed.z = throwSpeed.z + sliderValue;
         transform.GetComponent<Rigidbody>().AddForce(throwSpeed, ForceMode.Impulse);

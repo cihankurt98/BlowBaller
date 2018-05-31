@@ -424,12 +424,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c6665fe9127d18e4e8b2f11eecfc0a40, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cc7afdd734e2975489e52bcbc4f77898, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.7, y: 5.7}
+  m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -442,7 +442,7 @@ Transform:
   m_GameObject: {fileID: 818869223}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10, y: 3.49, z: 81.5}
-  m_LocalScale: {x: 70.258026, y: 34.77651, z: 2.4208224}
+  m_LocalScale: {x: 50.585648, y: 69.987724, z: 2.4208224}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -451,6 +451,18 @@ Transform:
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: a213c349dec634c6b81dfc8114650298, type: 3}
   m_PrefabInternal: {fileID: 966169004}
+--- !u!114 &872638322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 872638321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 605af2ed932431f42b1e33ab2ca66aef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: {fileID: 1832171395}
 --- !u!65 &872638324
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -475,18 +487,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10, y: 10, z: 1}
   m_Center: {x: -26, y: -16, z: 0}
---- !u!114 &872638326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 872638321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe1af01838a09489ea361d5aa64d1d74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  score: {fileID: 1832171395}
 --- !u!82 &872638327
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1286,7 +1286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1296,7 +1296,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 18
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
@@ -1357,17 +1357,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1997077180}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a91f3c23fa71d494ba55cf02b44ba140, type: 3}
+  m_Script: {fileID: 11500000, guid: f272f360da1572e44a8df419f2079c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minimumValueStart: 50
+  difficulty: 2
   basket: {fileID: 872638321}
+  movingBasket: 0
   basketSpeed: 30
   basketStartPosition: {x: 66.3, y: 51.182, z: 80.288}
   ball: {fileID: 1462896136}
-  ballThrowSpeed: {x: -200, y: -100, z: 50}
+  ballThrowSpeed: {x: 0, y: 90, z: 50}
   ballGravity: {x: 0, y: -50, z: 0}
   slider: {fileID: 766043574}
-  arrowSpeed: 0.3
+  arrowSpeed: 3
   deviceType: 2
 --- !u!4 &1997077182
 Transform:

@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-
 public class Basket : MonoBehaviour
 {
     public GameObject score;

@@ -16,23 +16,27 @@ public class Basket : MonoBehaviour
 
     void Update()
     {
-        if (transform.position.x >= 208)
+        if (GameMaster.instance.getMovingBasket() == true)
         {
-            goRight = false;
-            goLeft = true;
+            if (transform.position.x >= 208)
+            {
+                goRight = false;
+                goLeft = true;
+            }
+            else if (transform.position.x <= -71)
+            {
+                goLeft = false;
+                goRight = true;
+            }
+            if (goRight) transform.Translate(-Vector3.right * GameMaster.instance.getBasketSpeed() * Time.deltaTime);
+            else if (goLeft) transform.Translate(-Vector3.left * GameMaster.instance.getBasketSpeed() * Time.deltaTime);
         }
-        else if (transform.position.x <= -71)
-        {
-            goLeft = false;
-            goRight = true;
-        }
-        if (goRight) transform.Translate(-Vector3.right * GameMaster.instance.getBasketSpeed() * Time.deltaTime);
-        else if (goLeft) transform.Translate(-Vector3.left * GameMaster.instance.getBasketSpeed() * Time.deltaTime);
     }
 
     void OnTriggerEnter()
     {
         int currentScore = int.Parse(score.GetComponent<Text>().text) + 1;
+        GameMaster.instance.setMinimumValue(currentScore);
         score.GetComponent<Text>().text = currentScore.ToString();
         GetComponent<AudioSource>().Play();
     }

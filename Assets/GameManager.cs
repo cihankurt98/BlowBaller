@@ -5,18 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameMaster : MonoBehaviour
 {
-    [Header("Breath Settings")]
-    [SerializeField]
-    private int minimumValueStart;
-    [SerializeField]
-    private int difficulty;
-    private int minimumValue;
-    private int highestValueReached;
     [Header("Basket settings")]
     [SerializeField]
     private GameObject basket;
-    [SerializeField]
-    private bool movingBasket;
     [SerializeField]
     private float basketSpeed;
     [SerializeField]
@@ -36,8 +27,8 @@ public class GameMaster : MonoBehaviour
     [Header("Controller settings")]
     [SerializeField]
     private DeviceManager.DeviceType deviceType;
-
-
+  
+    
 
 
 
@@ -62,14 +53,12 @@ public class GameMaster : MonoBehaviour
     void Start()
     {
         DeviceManager.Instance.SetDeviceType(deviceType);
-        minimumValue = minimumValueStart;
-        highestValueReached = 0;
     }
-    void FixedUpdate()
+    void Update()
     {
         updateSlider();
-        // Debug.Log(DeviceManager.Instance.FlowLMin);
-        // Debug.Log(Input.GetAxis("Player_SimulateBreathingPs4"));
+      // Debug.Log(DeviceManager.Instance.FlowLMin);
+       // Debug.Log(Input.GetAxis("Player_SimulateBreathingPs4"));
     }
 
     public float getBasketSpeed()
@@ -97,11 +86,6 @@ public class GameMaster : MonoBehaviour
         return basketStartPosition;
     }
 
-    public bool getMovingBasket()
-    {
-        return movingBasket;
-    }
-
     private bool VectorCompare(Vector3 a, Vector3 b)
     {
         if (Mathf.Round(a.x) == Mathf.Round(b.x)
@@ -113,40 +97,18 @@ public class GameMaster : MonoBehaviour
         return false;
     }
 
-    public void setMinimumValue(int score)
-    {
-        if (score > 0)
-        {
-            minimumValue = minimumValueStart + (difficulty * score);
-        }
-    }
-
     public void updateSlider()
     {
         if (VectorCompare(ball.transform.position, ball.GetComponent<BallManager>().getStartPosition()) == true)
         {
             slider.value = (float)System.Math.Round(DeviceManager.Instance.FlowLMin, 1);
-            if (slider.value >= highestValueReached)
+           // Debug.Log(slider.value);
+            if (slider.value == slider.maxValue)
             {
-                highestValueReached = (int)slider.value;
-                if (highestValueReached >= minimumValue)
-                {
-                    Debug.Log("raak");
-                    ball.GetComponent<BallManager>().ShootBall(0);
-                    basket.GetComponent<Basket>().Reset();
-                    slider.value = 0;
-                    highestValueReached = 0;
-                }
-            }
-            else if (slider.value < highestValueReached)
-            {
-                Debug.Log("mis");
-                ball.GetComponent<BallManager>().ShootBall(-20);
+                ball.GetComponent<BallManager>().ShootBall(slider.value);
                 basket.GetComponent<Basket>().Reset();
                 slider.value = 0;
-                highestValueReached = 0;
             }
-
         }
     }
 

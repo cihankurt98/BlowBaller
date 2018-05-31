@@ -18,15 +18,16 @@ public class BallManager : MonoBehaviour
 
     void Start()
     {
-        Physics.gravity = new Vector3(0, 0, 0);
+        Physics.gravity = new Vector3(0,0,0);
         startPosition = transform.position;
     }
 
-    public void ShootBall(int power)
+    public void ShootBall(float sliderValue)
     {
         Physics.gravity = GameMaster.instance.getBallGravity();
         Vector3 tempThrowSpeed;
-        tempThrowSpeed = new Vector3(GameMaster.instance.getBallThrowSpeed().x, GameMaster.instance.getBallThrowSpeed().y + power, GameMaster.instance.getBallThrowSpeed().z); // power alleen voor missen
+        tempThrowSpeed = new Vector3(GameMaster.instance.getBallThrowSpeed().x + sliderValue, GameMaster.instance.getBallThrowSpeed().y
+            + sliderValue, GameMaster.instance.getBallThrowSpeed().z);
         GetComponent<Rigidbody>().AddForce(tempThrowSpeed, ForceMode.Impulse);
         GetComponent<AudioSource>().Play(); //play shoot sound
         StartCoroutine(ResetWait());

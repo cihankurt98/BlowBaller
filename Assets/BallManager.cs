@@ -3,7 +3,6 @@ using System.Collections;
 
 public class BallManager : MonoBehaviour
 {
-
     private Vector3 startPosition;
 
     IEnumerator ResetWait()

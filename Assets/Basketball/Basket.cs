@@ -5,7 +5,7 @@ using System.Collections;
 public class Basket : MonoBehaviour
 {
     public GameObject score;
-    private bool goRight = false;
+    private bool goRight = true;
     private bool goLeft = false;
 
 

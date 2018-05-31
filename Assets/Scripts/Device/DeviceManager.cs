@@ -11,6 +11,7 @@ public class DeviceManager : PersistentSingleton<DeviceManager>
     {
         AIRNEXT,
         CONTROLLER,
+        PSCONTROLLER,
         KUEFFNER
     }
 
@@ -109,6 +110,12 @@ public class DeviceManager : PersistentSingleton<DeviceManager>
         if (deviceType == DeviceType.CONTROLLER)
         {
             Debug.Log("Ik ben een controller");
+            spiroController = new SimulatedSpiroController();
+        }
+
+        if (deviceType == DeviceType.PSCONTROLLER)
+        {
+            Debug.Log("Ik ben een Playstation controller");
             spiroController = new SimulatedSpiroController();
         }
 
@@ -216,4 +223,10 @@ public class DeviceManager : PersistentSingleton<DeviceManager>
             DisconnectSpirometer();
         }
     }
+
+    public DeviceType GetDeviceType()
+    {
+        return deviceType;
+    }
+      
 }

@@ -54,10 +54,11 @@ public class GameMaster : MonoBehaviour
     {
         DeviceManager.Instance.SetDeviceType(deviceType);
     }
-
-    void FixedUpdate()
+    void Update()
     {
         updateSlider();
+      // Debug.Log(DeviceManager.Instance.FlowLMin);
+       // Debug.Log(Input.GetAxis("Player_SimulateBreathingPs4"));
     }
 
     public float getBasketSpeed()
@@ -85,11 +86,23 @@ public class GameMaster : MonoBehaviour
         return basketStartPosition;
     }
 
+    private bool VectorCompare(Vector3 a, Vector3 b)
+    {
+        if (Mathf.Round(a.x) == Mathf.Round(b.x)
+            && Mathf.Round(a.y) == Mathf.Round(b.y)
+            && Mathf.Round(a.z) == Mathf.Round(b.z))
+        {
+            return true;
+        }
+        return false;
+    }
+
     public void updateSlider()
     {
-        if (ball.transform.position == ball.GetComponent<BallManager>().getStartPosition())
+        if (VectorCompare(ball.transform.position, ball.GetComponent<BallManager>().getStartPosition()) == true)
         {
             slider.value = (float)System.Math.Round(DeviceManager.Instance.FlowLMin, 1);
+           // Debug.Log(slider.value);
             if (slider.value == slider.maxValue)
             {
                 ball.GetComponent<BallManager>().ShootBall(slider.value);

@@ -36,6 +36,7 @@ public class BallManager : MonoBehaviour
     {
         Physics.gravity = new Vector3(0, 0, 0);
         GetComponent<Rigidbody>().velocity = Vector3.zero;
+        GameMaster.instance.resetBasket();
         transform.position = startPosition;
     }
 }

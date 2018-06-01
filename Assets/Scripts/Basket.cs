@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System;
 public class Basket : MonoBehaviour
 {
     public GameObject score;
     private bool goRight = true;
     private bool goLeft = false;
+    private int currentScore;
 
 
     void OnCollisionEnter()
@@ -34,8 +36,7 @@ public class Basket : MonoBehaviour
 
     void OnTriggerEnter()
     {
-        int currentScore = int.Parse(score.GetComponent<Text>().text) + 1;
-        GameMaster.instance.setMinimumValue(currentScore);
+        currentScore++;
         score.GetComponent<Text>().text = currentScore.ToString();
         GetComponent<AudioSource>().Play();
     }
@@ -43,5 +44,6 @@ public class Basket : MonoBehaviour
     public void Reset()
     {
         transform.position = GameMaster.instance.getBasketStartPosition();
+        GameMaster.instance.setMinimumValue(currentScore);
     }
 }

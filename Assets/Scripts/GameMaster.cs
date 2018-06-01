@@ -32,6 +32,8 @@ public class GameMaster : MonoBehaviour
     [SerializeField]
     private Slider slider;
     [SerializeField]
+    private GameObject minimumValueArrow;
+    [SerializeField]
     private float arrowSpeed;
     [Header("Controller settings")]
     [SerializeField]
@@ -64,6 +66,7 @@ public class GameMaster : MonoBehaviour
         DeviceManager.Instance.SetDeviceType(deviceType);
         minimumValue = minimumValueStart;
         highestValueReached = 0;
+        minimumValueArrow.GetComponent<minimumValueArrow>().changePosition(slider, minimumValue);
     }
     void FixedUpdate()
     {
@@ -118,7 +121,16 @@ public class GameMaster : MonoBehaviour
         if (score > 0)
         {
             minimumValue = minimumValueStart + (difficulty * score);
+            minimumValueArrow.GetComponent<minimumValueArrow>().changePosition(slider, minimumValue);
+            
         }
+    }
+
+    public void resetBasket()
+    {
+        slider.value = 0;
+        highestValueReached = 0;
+        basket.GetComponent<Basket>().Reset();
     }
 
     public void updateSlider()
@@ -133,18 +145,12 @@ public class GameMaster : MonoBehaviour
                 {
                     Debug.Log("raak");
                     ball.GetComponent<BallManager>().ShootBall(0);
-                    basket.GetComponent<Basket>().Reset();
-                    slider.value = 0;
-                    highestValueReached = 0;
                 }
             }
             else if (slider.value < highestValueReached)
             {
                 Debug.Log("mis");
                 ball.GetComponent<BallManager>().ShootBall(-20);
-                basket.GetComponent<Basket>().Reset();
-                slider.value = 0;
-                highestValueReached = 0;
             }
 
         }
